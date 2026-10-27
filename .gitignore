@@ -30,3 +30,6 @@ __pycache__/
 slurm-*.out
 *.log
 tmp/
+
+# Apptainer container images
+*.sif

@@ -25,3 +25,24 @@ The images, reference files, VEP cache, and sequencing data are not included in 
 Compatible images and resources must be supplied before running the workflow.
 Container build recipes and immutable image digests have not been documented.
 The adapted workflow has not been rerun end to end.
+
+## Verified Container Provenance
+
+The Apptainer image metadata identifies these Docker sources:
+
+| Application | Docker source |
+|---|---|
+| GATK 4.6.2.0 | `broadinstitute/gatk:4.6.2.0` |
+| Ensembl VEP 115.2 | `ensemblorg/ensembl-vep:release_115.2` |
+
+Compatible images can be obtained using:
+
+```bash
+apptainer pull gatk_4.6.2.0.sif docker://broadinstitute/gatk:4.6.2.0
+apptainer pull vep_115.2.sif docker://ensemblorg/ensembl-vep:release_115.2
+
+```
+
+These commands reproduce the container setup from versioned Docker images, but identical binaries are not guaranteed without immutable image digests.
+
+Offline VEP annotation also requires a compatible GRCh38 cache.
