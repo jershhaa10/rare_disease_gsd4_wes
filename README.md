@@ -100,7 +100,7 @@ a patient with glycogen storage disease IV in Indonesia.*
 
 Data in Brief.
 
-DOI: https://doi.org/10.1016/j.dib.2024.111231
+Harsono, I. W., Ariani, Y., Benyamin, B., Fadilah, F., Pujianto, D. A., Hafifah, C. N., & Prawitasari, T. (2024). Clinical phenotype and trio whole exome sequencing data from a patient with glycogen storage disease IV in Indonesia. Data in brief, 58, 111231. DOI: https://doi.org/10.1016/j.dib.2024.111231 
 
 This project represents an independent computational reanalysis
 of publicly available trio-WES data from the original study.
