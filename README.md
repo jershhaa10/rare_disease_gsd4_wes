@@ -54,6 +54,15 @@ pathogenicity.
 
 The analysis was performed on a SLURM-managed HPC cluster using GRCh38.p14.
 
+
+### Containerization and Software Environments
+
+GATK 4.6.2.0 and Ensembl VEP 115.2 were executed using **Docker-derived Apptainer containers** on the SLURM-managed HPC cluster, providing version-specific software environments. BWA-MEM, samtools, and bcftools were accessed through HPC environment modules.
+
+Container image sources, reconstruction commands, software versions, and reproducibility considerations are documented in [`containers/README.md`](containers/README.md).
+
+The workflow uses a hybrid container/module environment and is not fully containerized.
+
 The principal variant-processing sequence is:
 
 1. BWA-MEM alignment and duplicate marking
