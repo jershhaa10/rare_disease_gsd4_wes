@@ -1,0 +1,32 @@
+# Raw sequencing and alignment data
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.bai
+*.cram
+
+# Variant files and indexes
+*.vcf
+*.vcf.gz
+*.tbi
+*.csi
+*.gvcf.gz
+
+# Reference genomes
+*.fa
+*.fasta
+*.fai
+*.dict
+
+# Python temporary files
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Cluster and temporary files
+slurm-*.out
+*.log
+tmp/
