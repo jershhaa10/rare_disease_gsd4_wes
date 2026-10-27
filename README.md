@@ -43,14 +43,36 @@ in the annotation used for this analysis. The observed inheritance
 pattern supports its prioritization but does not establish
 pathogenicity.
 
+## Repository Structure
+
+- `scripts/cluster_slurm/` — Sample-specific BWA-MEM alignment and GATK duplicate-marking scripts adapted from the original HPC analysis.
+- `scripts/workflow/` — Scripts for coverage assessment, BQSR, variant calling, joint genotyping, VCF processing, quality filtering, VEP annotation, and downstream analyses.
+- `scripts/variant_prioritization.py` — Inheritance-aware variant prioritization.
+- `documents/variant_prioritization_versions.txt` — Recorded software versions for the prioritization analysis.
+
 ## Reproducibility
-The variant prioritization analysis is implemented in:
 
-`scripts/variant_prioritization.py`
+The analysis was performed on a SLURM-managed HPC cluster using GRCh38.p14.
 
-Software versions are documented in:
+The principal variant-processing sequence is:
 
-`documents/variant_prioritization_versions.txt`
+1. BWA-MEM alignment and duplicate marking
+2. Base quality score recalibration (BQSR)
+3. GATK HaplotypeCaller in gVCF mode
+4. Trio joint genotyping
+5. VCF normalization using bcftools
+6. GATK hard filtering using VariantFiltration
+7. Extraction of PASS variants
+8. Chromosome-name conversion and offline Ensembl VEP annotation
+9. Population-frequency annotation and inheritance-aware prioritization
+
+The repository contains individual analysis scripts rather than a fully automated end-to-end workflow. Some scripts support project-directory configuration through the `WES_PROJECT_DIR` environment variable; the default points to the original HPC scratch-directory layout.
+
+The scripts depend on the relevant reference files, sequencing data, annotation resources, software modules, and Apptainer images. Large input datasets, reference resources, and container images are not distributed in this repository.
+
+The recovered shell scripts have been checked for Bash syntax, but the adapted workflow has not been rerun end to end. The variant-prioritization script was separately tested against the original annotated VCF.
+
+`11b_extract_pass_variants.sh` reconstructs a previously undocumented PASS-extraction step. Its expected output was verified against the original analysis: all 68,523 PASS variant records matched exactly.
 
 ## Limitations
 - Detailed phenotype-driven prioritization has not been completed.
